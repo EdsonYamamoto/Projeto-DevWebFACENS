@@ -15,7 +15,7 @@
             </v-layout>
             <v-divider v-else-if="item.divider" :key="i" dark class="my-3" ></v-divider>
 
-            <v-list-tile v-else :key="i" @click="item.function">
+            <v-list-tile v-else :key="i" @click="AtualizarTela(item.function)">
                 <v-list-tile-action>
                     <v-icon>{{ item.icon }}</v-icon>
                 </v-list-tile-action>
@@ -41,10 +41,12 @@
         <v-spacer></v-spacer>
         </v-toolbar>
         <v-content>
-        <v-container fluid fill-height class="grey lighten-4">
+        <v-container fluid fill-height class="white">
             <v-layout justify-center align-center>
             <v-flex shrink>
-                <dash1></dash1>
+                <main-dashboard v-if="this.tela==''"></main-dashboard>
+                <user-form v-if="this.tela=='notas'"></user-form>
+                <professor-form v-if="this.tela=='acessso'"></professor-form>
             </v-flex>
             </v-layout>
         </v-container>
@@ -54,101 +56,97 @@
 
 <script>
 /* eslint-disable */
-import dash1 from '@/components/Dash1'
+
+import userForm from "@/components/UserForm";
+import professorForm from "@/components/ProfessorForm";
+import mainDashboard from "@/components/MainDashboard";
+
 export default {
-    components: {
-        dash1
-    },
-    data: () => ({
-        drawer: null,
-        items: [
-        {
-            icon: "fas fa-lightbulb",
-            text: "Notes",
-            function: function() {
-            console.log("teste1");
-            }
-        },
-        {
-            icon: "fas fa-fingerprint",
-            text: "Reminders",
-            function: function() {
-            console.log("teste2");
-            }
-        },
-        { divider: true },
-        { heading: "Labels" },
-        {
-            icon: "fas fa-plus",
-            text: "Create new label",
-            function: function() {
-            console.log("teste3");
-            }
-        },
-        { divider: true },
-        {
-            icon: "fas fa-archive",
-            text: "Archive",
-            function: function() {
-            console.log("teste4");
-            }
-        },
-        {
-            icon: "fas fa-trash-alt",
-            text: "Trash",
-            function: function() {
-            console.log("teste5");
-            }
-        },
-        { divider: true },
-        {
-            icon: "fas fa-cog",
-            text: "Settings",
-            function: function() {
-            console.log("teste6");
-            }
-        },
-        {
-            icon: "far fa-comments",
-            text: "Trash",
-            function: function() {
-            console.log("teste7");
-            }
-        },
-        {
-            icon: "fas fa-question-circle",
-            text: "Help",
-            function: function() {
-            console.log("teste8");
-            }
-        },
-        {
-            icon: "fas fa-mobile",
-            text: "App downloads",
-            function: function() {
-            console.log("teste9");
-            }
-        },
-        {
-            icon: "fas fa-keyboard",
-            text: "Keyboard shortcuts",
-            function: function() {
-            console.log("teste10");
-            }
-        }
-        ]
-    }),
-    props: {
-        source: String
-    },
-    methods: {}
+  components: {
+    mainDashboard,
+    userForm,
+    professorForm
+  },
+  data: () => ({
+    drawer: null,
+    items: [
+      {
+        icon: "fas fa-home",
+        text: "Dashaboard",
+        function: ""
+      },
+      {
+        icon: "fas fa-lightbulb",
+        text: "Notes",
+        function: "notas"
+      },
+      {
+        icon: "fas fa-fingerprint",
+        text: "Reminders",
+        function: "acessso"
+      },
+      { divider: true },
+      { heading: "Labels" },
+      {
+        icon: "fas fa-plus",
+        text: "Create new label",
+        function: "novo"
+      },
+      { divider: true },
+      {
+        icon: "fas fa-archive",
+        text: "Archive",
+        function: "arquivo"
+      },
+      {
+        icon: "fas fa-trash-alt",
+        text: "Trash",
+        function: "lixeira"
+      },
+      { divider: true },
+      {
+        icon: "fas fa-cog",
+        text: "Settings",
+        function: "configuracao"
+      },
+      {
+        icon: "far fa-comments",
+        text: "Trash",
+        function: "lixeira"
+      },
+      {
+        icon: "fas fa-question-circle",
+        text: "Help",
+        function: "ajuda"
+      },
+      {
+        icon: "fas fa-mobile",
+        text: "App downloads",
+        function: "download"
+      },
+      {
+        icon: "fas fa-keyboard",
+        text: "Keyboard shortcuts",
+        function: "teclado"
+      }
+    ],
+    tela: ""
+  }),
+  props: {
+    source: String
+  },
+  methods: {
+    AtualizarTela: function(nome) {
+      this.tela = nome;
+    }
+  }
 };
 </script>
 
 <style lang="stylus">
 #keep {
-    .v-navigation-drawer__border {
-        display: none;
-    }
+  .v-navigation-drawer__border {
+    display: none;
+  }
 }
 </style>
