@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <md-button>Default</md-button>
     <h2>Essential Links</h2>
     <ul>
       <li>
