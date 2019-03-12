@@ -45,9 +45,9 @@
             <v-layout justify-center align-center>
             <v-flex shrink>
                 <main-dashboard v-if="this.tela==''"></main-dashboard>
-                <user-form v-if="this.tela=='notas'"></user-form>
-                <professor-form v-if="this.tela=='acessso'"></professor-form>
-                <form-novo-admin v-if="this.tela=='novoAdmin'"></form-novo-admin>
+                <professor-form v-if="this.tela=='novoProf'"></professor-form>
+                <usuario-form v-if="this.tela=='novoUsuario'"></usuario-form>
+                <curso-form v-if="this.tela=='novoCurso'"></curso-form>
                 <input-file v-if="this.tela=='inputFile'"></input-file>
                 
             </v-flex>
@@ -61,9 +61,10 @@
 /* eslint-disable */
 
 import userForm from "@/components/UserForm";
-import professorForm from "@/components/ProfessorForm";
+import professorForm from "@/components/forms/ProfessorForm";
 import mainDashboard from "@/components/MainDashboard";
-import formNovoAdmin from "@/components/FormNovoAdmin";
+import usuarioForm from "@/components/forms/UsuarioForm";
+import cursoForm from "@/components/forms/CursoForm";
 import inputFile from "@/components/InputFile";
 
 export default {
@@ -71,8 +72,9 @@ export default {
     mainDashboard,
     userForm,
     professorForm,
-    formNovoAdmin,
-    inputFile
+    usuarioForm,
+    inputFile,
+    cursoForm
   },
   data: () => ({
     drawer: null,
@@ -94,8 +96,13 @@ export default {
       },
       {
         icon: "fas fa-plus",
-        text: "Novo administrador",
-        function: "novoAdmin"
+        text: "Novo Usuario",
+        function: "novoUsuario"
+      },
+      {
+        icon: "fas fa-plus",
+        text: "Novo Curso",
+        function: "novoCurso"
       },
       {
         icon: "fas fa-plus",

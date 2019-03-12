@@ -1,7 +1,7 @@
 <template>
 	<v-container fluid>
-    
 				<v-card>
+	        <v-container fluid>
 						<v-card-title class="headline">Upload arquivos</v-card-title>
             <v-flex xs12 class="text-xs-center text-sm-center text-md-center text-lg-center">
             
@@ -12,6 +12,7 @@
                 <input type="file" :accept="accept" :multiple="false" :disabled="disabled" ref="fileInput" @change="onFileChange">
 
             </v-flex>
+    			</v-container>
 				</v-card>
 			</v-container>
 </template>
