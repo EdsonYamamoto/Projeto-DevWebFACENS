@@ -1,5 +1,6 @@
 <template>
     <v-flex xs12>
+    <curso-card></curso-card>
         <v-card>
             <v-layout row wrap>
                 <v-flex
@@ -23,7 +24,12 @@
 </style>
 <script>
 import { GChart } from "vue-google-charts";
+import cursoCard from "@/components/cards/CursoCard";
+
 export default {
+  components: {
+    cursoCard
+  },
   data() {
     return {
       // Array will be automatically processed with visualization.arrayToDataTable function
