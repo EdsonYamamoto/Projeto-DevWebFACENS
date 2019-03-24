@@ -85,6 +85,11 @@ export default {
         function: ""
       },
       {
+        icon: "fas fa-chart-line",
+        text: "Grafics",
+        function: "charts"
+      },
+      {
         icon: "fas fa-lightbulb",
         text: "Notes",
         function: "notas"

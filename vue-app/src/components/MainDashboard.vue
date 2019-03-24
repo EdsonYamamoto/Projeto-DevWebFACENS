@@ -1,6 +1,6 @@
 <template>
     <v-flex xs12>
-    <curso-card></curso-card>
+    <curso-card ></curso-card>
         <v-card>
             <v-layout row wrap>
                 <v-flex
