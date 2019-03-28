@@ -38,14 +38,23 @@
             label="Search"
             prepend-inner-icon="fas fa-search"
         ></v-text-field>
-        <v-spacer></v-spacer>
+        <v-spacer>
+          
+          
+
+        </v-spacer>
+        <v-btn dark color="secondary"
+          @click="Quit()"
+        >
+        <v-icon left >fas fa-sign-out-alt</v-icon>
+          Sair
+        </v-btn>
         </v-toolbar>
         <v-content>
         <v-container fluid fill-height class="white">
             <v-layout justify-center align-center>
             <v-flex shrink>
                 <main-dashboard v-if="this.tela==''"></main-dashboard>
-                <professor-form v-if="this.tela=='novoProf'"></professor-form>
                 <usuario-form v-if="this.tela=='novoUsuario'"></usuario-form>
                 <curso-form v-if="this.tela=='novoCurso'"></curso-form>
                 <input-file v-if="this.tela=='inputFile'"></input-file>
@@ -61,7 +70,6 @@
 /* eslint-disable */
 
 import userForm from "@/components/UserForm";
-import professorForm from "@/components/forms/ProfessorForm";
 import mainDashboard from "@/components/MainDashboard";
 import usuarioForm from "@/components/forms/UsuarioForm";
 import cursoForm from "@/components/forms/CursoForm";
@@ -71,7 +79,6 @@ export default {
   components: {
     mainDashboard,
     userForm,
-    professorForm,
     usuarioForm,
     inputFile,
     cursoForm
@@ -167,6 +174,9 @@ export default {
   methods: {
     AtualizarTela: function(nome) {
       this.tela = nome;
+    },
+    Quit: function() {
+      console.log("SAIR!!!");
     }
   }
 };

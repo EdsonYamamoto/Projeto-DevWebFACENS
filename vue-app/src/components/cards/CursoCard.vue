@@ -1,8 +1,8 @@
 <template>
             <v-layout row wrap>
                 <v-flex
-                v-for="curso in Cursos"
-                :key="curso"
+                v-for="(curso,i) in Cursos"
+                :key="`${i}-${curso.Id}`"
                 xs4
                 d-flex
                 >
@@ -12,7 +12,7 @@
           :src= curso.image
           aspect-ratio="2.75"
         ></v-img>
-
+        
         <v-card-title primary-title>
           <div>
             <h3 class="headline mb-0">{{ curso.curso_title }}</h3>
@@ -27,12 +27,21 @@
       </v-card>
       </v-container>
                 </v-flex>
-            </v-layout>
+                
+
+          <v-text-field
+            v-model="dataTeste"
+            label="Title"
+            maxlength="20"
+          ></v-text-field>
+    </v-layout>
 </template>
 <style>
 </style>
 <script>
 /* eslint-disable */
+
+import axios from "axios";
 export default {
   data() {
     return {
@@ -41,7 +50,8 @@ export default {
       Coordenador: "",
       Duracao: 0,
       GradeCurricular: [],
-      Cursos: []
+      Cursos: [],
+      dataTeste: ""
     };
   },
   created() {
@@ -75,9 +85,32 @@ export default {
     },
     Botao1: function(curso) {
       console.log(curso);
+      axios({
+        method: "get",
+        url: "https://viacep.com.br/ws/" + this.dataTeste + "/json/"
+      })
+        .then(function(response) {
+          console.log("FUNCIONOU!");
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log("FALHOU!");
+          console.log(error);
+        });
     },
     Botao2: function(curso) {
       console.log(curso);
+      axios
+
+        .post("http://localhost:5000/Usuario/InserirUsuario", {})
+        .then(function(response) {
+          console.log("FUNCIONOU!");
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log("FALHOU!");
+          console.log(error);
+        });
     }
   }
 };

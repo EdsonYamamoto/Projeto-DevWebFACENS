@@ -6,15 +6,16 @@
     >
       <v-card>
   <v-container grid-list-xl>
-    <v-title>
-      <h2>Cadastro de usuario</h2> 
-    </v-title>
+    <v-card-title primary-title>
+          <div>
+            <h3 class="headline mb-0">Cadastro de usuário</h3>
+          </div>
+      
+    </v-card-title>
       <v-flex>
         <v-form ref="form">
           <v-text-field
             v-model="Nome"
-            :counter="max"
-            :rules="rules"
             label="Nome"
           ></v-text-field>
 
@@ -42,14 +43,10 @@
 
           <v-text-field
             v-model="CPF"
-            :counter="max"
-            :rules="rules"
             label="CPF"
           ></v-text-field>
           <v-text-field
             v-model="Email"
-            :counter="max"
-            :rules="rules"
             label="Email"
           ></v-text-field>
           
@@ -90,6 +87,8 @@
 <style>
 </style>
 <script>
+/* eslint-disable */
+import axios from "axios";
 export default {
   data() {
     return {
@@ -123,11 +122,21 @@ export default {
     SaveAdminForm: function() {
       var obj = {
         Nome: this.Nome,
-        Nascimento: this.Nascimento,
+        Nascimento: new Date(this.Nascimento).toISOString(),
         CPF: this.CPF,
         Email: this.CPF,
         Senha: this.Senha
       };
+
+      axios
+        .post("http://localhost:5000/Usuario/InserirUsuario", obj)
+        .then(result => {
+          console.log(result);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
       console.log(obj);
     }
   }

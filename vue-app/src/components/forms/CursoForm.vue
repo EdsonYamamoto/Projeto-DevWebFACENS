@@ -5,42 +5,35 @@
       justify-space-between
     >
       <v-card>
+    <v-card-title primary-title>
+        <h3 class="headline mb-0">Cadastro de curso</h3>
+    </v-card-title>
   <v-container grid-list-xl>
-    <v-title>
-      Cadastro de Admin
-    </v-title>
       <v-flex>
         <v-form ref="form">
           <v-text-field
             v-model="Nome"
-            :counter="max"
-            :rules="rules"
             label="Nome"
           ></v-text-field>
           <v-text-field
             v-model="Coordenador"
-            :counter="max"
-            :rules="rules"
-            label="Nascimento"
+            label="Coordenador"
           ></v-text-field>
           <v-text-field
-            v-model="CPF"
-            :counter="max"
-            :rules="rules"
-            label="CPF"
+            v-model="Duracao"
+            label="Duracao"
           ></v-text-field>
           <v-text-field
-            v-model="Email"
-            :counter="max"
-            :rules="rules"
-            label="Email"
+            v-model="GradeCurricular"
+            label="GradeCurricular"
           ></v-text-field>
-          <v-text-field
-            v-model="Senha"
-            :counter="max"
-            :rules="rules"
-            label="Senha"
-          ></v-text-field>
+          
+          <v-btn
+          color="success"
+          @click="SaveCursoForm"
+          >
+            Cadastrar
+          </v-btn>
         </v-form>        
       </v-flex>  
       </v-container>
@@ -52,6 +45,7 @@
 <style>
 </style>
 <script>
+/* eslint-disable */
 export default {
   data() {
     return {
@@ -65,6 +59,17 @@ export default {
   methods: {
     teste: function() {
       console.log(this.modelo);
+    },
+    SaveCursoForm: function() {
+      var obj = {
+        id: this.Id,
+        Nome: this.Nome,
+        Coordenador: this.Coordenador,
+        Duracao: this.Duracao,
+        GradeCurricular: this.GradeCurricular
+      };
+
+      console.log(obj);
     }
   }
 };

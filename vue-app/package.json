@@ -1,14 +1,13 @@
 {
-  "name": "devwebfacens",
+  "name": "projeodesenvwebfacens2019",
   "version": "1.0.0",
   "description": "projeto da faculdade utilizando vue js",
   "author": "Edson Yamamoto <edsonkazyamamoto@gmail.com>",
   "private": true,
   "postinstall": "npm run build",
-  "start": "node server.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "node server.js",
+    "start": "npm run dev",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -16,6 +15,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt": "^0.8.5",
+    "body-parser": "*",
+    "express": "*",
     "materialize-css": "^1.0.0-rc.2",
     "vue": "^2.5.2",
     "vue-google-charts": "^0.3.2",

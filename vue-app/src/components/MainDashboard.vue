@@ -23,6 +23,7 @@
 <style lang="stylus">
 </style>
 <script>
+/* eslint-disable */
 import { GChart } from "vue-google-charts";
 import cursoCard from "@/components/cards/CursoCard";
 

@@ -19,7 +19,7 @@
                         <div  class="headline mb-0">Login</div>
                     </v-card-title>
                 <v-card-content>
-                    <v-form v-model="valid" @submit.prevent>
+                    <v-form @submit.prevent>
                         <v-container>
                             <v-text-field
                                 v-model="login"
