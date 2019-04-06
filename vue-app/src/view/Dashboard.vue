@@ -1,6 +1,6 @@
 <template>
   <v-app id="keep">
-    <v-navigation-drawer v-model="drawer" fixed clipped class="grey lighten-4" app>
+    <v-navigation-drawer v-model="drawer" absolute clipped class="grey lighten-4" app>
       <v-list dense class="grey lighten-4">
         <template v-for="(item, i) in items">
           <v-layout v-if="item.heading" :key="i" row align-center>
@@ -43,7 +43,7 @@
         <v-layout justify-center align-center>
           <v-flex shrink>
             <main-dashboard v-if="this.tela==''"></main-dashboard>
-            <usuario-form v-if="this.tela=='novoUsuario'"></usuario-form>
+            <usuario-form v-if="this.tela=='Usuarios'"></usuario-form>
             <curso-form v-if="this.tela=='novoCurso'"></curso-form>
             <input-file v-if="this.tela=='inputFile'"></input-file>
           </v-flex>
@@ -94,9 +94,9 @@ export default {
         function: "acessso"
       },
       {
-        icon: "fas fa-plus",
-        text: "Novo Usuario",
-        function: "novoUsuario"
+        icon: "fas fa-user",
+        text: "Usuarios",
+        function: "Usuarios"
       },
       {
         icon: "fas fa-plus",
