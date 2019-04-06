@@ -43,7 +43,7 @@
         <v-layout justify-center align-center>
           <v-flex shrink>
             <main-dashboard v-if="this.tela==''"></main-dashboard>
-            <usuario-form v-if="this.tela=='Usuarios'"></usuario-form>
+            <usuario-view v-if="this.tela=='Usuarios'"></usuario-view>
             <curso-form v-if="this.tela=='novoCurso'"></curso-form>
             <input-file v-if="this.tela=='inputFile'"></input-file>
           </v-flex>
@@ -58,15 +58,16 @@
 
 import userForm from "@/components/UserForm";
 import mainDashboard from "@/components/MainDashboard";
-import usuarioForm from "@/components/forms/UsuarioForm";
+import usuarioView from "@/view/UsuarioView";
 import cursoForm from "@/components/forms/CursoForm";
 import inputFile from "@/components/InputFile";
+import * as ServiceUser from "@/assets/service/userService.js";
 
 export default {
   components: {
     mainDashboard,
     userForm,
-    usuarioForm,
+    usuarioView,
     inputFile,
     cursoForm
   },
@@ -100,8 +101,8 @@ export default {
       },
       {
         icon: "fas fa-plus",
-        text: "Novo Curso",
-        function: "novoCurso"
+        text: "Curso",
+        function: "Curso"
       },
       {
         icon: "fas fa-plus",
@@ -163,7 +164,7 @@ export default {
       this.tela = nome;
     },
     Quit: function() {
-      console.log("SAIR!!!");
+      ServiceUser.Logout();
     }
   }
 };

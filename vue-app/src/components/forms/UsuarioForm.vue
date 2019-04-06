@@ -1,36 +1,34 @@
 <template>
   <v-container grid-list-xl>
     <v-layout wrap justify-space-between>
-      <v-card>
-        <v-container grid-list-xl>
-          <v-card-title primary-title>
-            <div>
-              <h3 class="headline mb-0">Cadastro de usuário</h3>
-            </div>
-          </v-card-title>
-          <v-flex>
-            <v-form ref="form">
-              <v-text-field v-model="Nome" label="Nome"></v-text-field>
-              <v-menu v-model="menu" :close-on-content-click="false" :nudge-right="40" lazy transition="scale-transition" offset-y full-width
-                min-width="290px">
-                <template v-slot:activator="{ on }">
-                  <v-text-field v-model="Nascimento" label="Data Nascimento" prepend-icon="fas fa-calendar-alt" readonly v-on="on"></v-text-field>
-                </template>
-                <v-date-picker v-model="Nascimento" @input="menu = false"></v-date-picker>
-              </v-menu>
-              <v-text-field v-model="CPF" label="CPF"></v-text-field>
-              <v-text-field v-model="Email" label="Email"></v-text-field>
-              <v-text-field v-model="Senha" :append-icon="show1 ? 'fas fa-eye' : 'fas fa-eye-slash'" :rules="[rules.required, rules.min]"
-                :type="show1 ? 'text' : 'password'" name="input-10-1" label="Senha" hint="Pelo menos 8 caraceters" counter
-                @click:append="show1 = !show1"></v-text-field>
-              <v-select v-model="Permissao" :items="items" label="Standard"></v-select>
-              <v-btn color="success" @click="SaveAdminForm">
-                Cadastrar
-              </v-btn>
-            </v-form>
-          </v-flex>
-        </v-container>
-      </v-card>
+      <v-container grid-list-xl white>
+        <v-card-title primary-title>
+          <div>
+            <h3 class="headline mb-0">Cadastro de usuário</h3>
+          </div>
+        </v-card-title>
+        <v-flex>
+          <v-form ref="form">
+            <v-text-field v-model="Nome" label="Nome"></v-text-field>
+            <v-menu v-model="menu" :close-on-content-click="false" :nudge-right="40" lazy transition="scale-transition" offset-y full-width
+              min-width="290px">
+              <template v-slot:activator="{ on }">
+                <v-text-field v-model="Nascimento" label="Data Nascimento" prepend-icon="fas fa-calendar-alt" readonly v-on="on"></v-text-field>
+              </template>
+              <v-date-picker v-model="Nascimento" @input="menu = false"></v-date-picker>
+            </v-menu>
+            <v-text-field v-model="CPF" label="CPF"></v-text-field>
+            <v-text-field v-model="Email" label="Email"></v-text-field>
+            <v-text-field v-model="Senha" :append-icon="show1 ? 'fas fa-eye' : 'fas fa-eye-slash'" :rules="[rules.required, rules.min]"
+              :type="show1 ? 'text' : 'password'" name="input-10-1" label="Senha" hint="Pelo menos 8 caraceters" counter @click:append="show1 = !show1"></v-text-field>
+            <v-select v-model="Permissao" :items="items" label="Standard"></v-select>
+            <v-btn color="success" @click="SalvarUsuario">
+              Cadastrar
+            </v-btn>
+          </v-form>
+        </v-flex>
+      </v-container>
+
     </v-layout>
   </v-container>
 </template>
@@ -69,13 +67,14 @@
       };
     },
     methods: {
-      SaveAdminForm: function () {
+      SalvarUsuario: function () {
         var obj = {
           Nome: this.Nome,
           Nascimento: new Date(this.Nascimento).toISOString(),
           CPF: this.CPF,
           Email: this.CPF,
-          Senha: this.Senha
+          Senha: this.Senha,
+          Permissao: this.Permissao
         };
         axios
           .post("http://localhost:5000/Usuario/InserirUsuario", obj)
