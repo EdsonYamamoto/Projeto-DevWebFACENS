@@ -45,6 +45,8 @@
             <main-dashboard v-if="this.tela==''"></main-dashboard>
             <usuario-view v-if="this.tela=='Usuarios'"></usuario-view>
             <curso-view v-if="this.tela=='Cursos'"></curso-view>
+            <disciplina-view v-if="this.tela=='Disciplina'"></disciplina-view>
+            <graficos-view v-if="this.tela=='Graficos'"></graficos-view>
             <input-file v-if="this.tela=='inputFile'"></input-file>
           </v-flex>
         </v-layout>
@@ -59,6 +61,8 @@
 import mainDashboard from "@/components/MainDashboard";
 import usuarioView from "@/view/UsuarioView";
 import cursoView from "@/view/CursoView";
+import disciplinaView from "@/view/DisciplinaView";
+import graficosView from "@/view/GraphsView";
 import inputFile from "@/components/InputFile";
 import * as ServiceUser from "@/assets/service/userService.js";
 
@@ -66,7 +70,9 @@ export default {
   components: {
     mainDashboard,
     usuarioView,
+    disciplinaView,
     cursoView,
+    graficosView,
     inputFile
   },
   data: () => ({
@@ -80,7 +86,7 @@ export default {
       {
         icon: "fas fa-chart-line",
         text: "Graficos",
-        function: "charts"
+        function: "Graficos"
       },
       {
         icon: "fas fa-lightbulb",
@@ -96,6 +102,11 @@ export default {
         icon: "fas fa-tags",
         text: "Cursos",
         function: "Cursos"
+      },
+      {
+        icon: "fas fa-book",
+        text: "Disciplina",
+        function: "Disciplina"
       },
       {
         icon: "fas fa-plus",
