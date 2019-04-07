@@ -44,7 +44,6 @@
           <v-flex shrink>
             <main-dashboard v-if="this.tela==''"></main-dashboard>
             <usuario-view v-if="this.tela=='Usuarios'"></usuario-view>
-            <curso-form v-if="this.tela=='novoCurso'"></curso-form>
             <input-file v-if="this.tela=='inputFile'"></input-file>
           </v-flex>
         </v-layout>
@@ -56,43 +55,34 @@
 <script>
 /* eslint-disable */
 
-import userForm from "@/components/UserForm";
 import mainDashboard from "@/components/MainDashboard";
 import usuarioView from "@/view/UsuarioView";
-import cursoForm from "@/components/forms/CursoForm";
 import inputFile from "@/components/InputFile";
 import * as ServiceUser from "@/assets/service/userService.js";
 
 export default {
   components: {
     mainDashboard,
-    userForm,
     usuarioView,
-    inputFile,
-    cursoForm
+    inputFile
   },
   data: () => ({
     drawer: null,
     items: [
       {
         icon: "fas fa-home",
-        text: "Dashaboard",
+        text: "Dashboard",
         function: ""
       },
       {
         icon: "fas fa-chart-line",
-        text: "Grafics",
+        text: "Graficos",
         function: "charts"
       },
       {
         icon: "fas fa-lightbulb",
-        text: "Notes",
+        text: "Notas",
         function: "notas"
-      },
-      {
-        icon: "fas fa-fingerprint",
-        text: "Reminders",
-        function: "acessso"
       },
       {
         icon: "fas fa-user",
@@ -100,7 +90,7 @@ export default {
         function: "Usuarios"
       },
       {
-        icon: "fas fa-plus",
+        icon: "fas fa-tags",
         text: "Curso",
         function: "Curso"
       },
@@ -108,13 +98,6 @@ export default {
         icon: "fas fa-plus",
         text: "Adicionar csv",
         function: "inputFile"
-      },
-      { divider: true },
-      { heading: "Labels" },
-      {
-        icon: "fas fa-plus",
-        text: "Create new label",
-        function: "novo"
       },
       { divider: true },
       {

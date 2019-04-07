@@ -2,9 +2,7 @@
     <v-card>
         <v-data-table :headers="headers" :items="desserts" class="elevation-1">
             <template v-slot:items="props">
-                
-                <td>{{ props.item.ID }}</td>
-                <td class="text-xs-right">{{ props.item.Nome }}</td>
+                <td>{{ props.item.Nome }}</td>
                 <td class="text-xs-right">{{ props.item.Nacismento }}</td>
                 <td class="text-xs-right">{{ props.item.CPF }}</td>
                 <td class="text-xs-right">{{ props.item.Email }}</td>
@@ -18,7 +16,7 @@
                             </v-btn>
                         </template>
                         <v-card>
-                            <usuario-form :ID=userAux.ID :Nome=userAux.Nome :Nacismento=userAux.Nacismento :CPF=userAux.CPF :Email=userAux.Email :Senha=userAux.Senha :Permissao=userAux.Permissao></usuario-form>
+                            <usuario-form v-bind=userAux></usuario-form>
                         </v-card>
                     </v-dialog>
                     <v-btn fab dark small color="primary" @click="EditarUsuario(props.item)">
@@ -84,7 +82,7 @@ export default {
   },
   methods: {
     EditarUsuario: function(usuario) {
-      ServiceUser.EditarUsuario(usuario);
+      console.log(usuario.Nome);
     },
     DeletarUsuario: function(usuario) {
       ServiceUser.DeletarUsuario(usuario);

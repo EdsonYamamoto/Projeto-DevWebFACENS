@@ -1,5 +1,5 @@
 import { url } from '@/assets/util.js'
-
+/* eslint-disable */
 export function EncontraUsuario(login, senha) {
     console.log(url);
     var usuario;
@@ -15,10 +15,11 @@ export function EncontraTodosUsuario() {
 
     var headers = [
         {
-            text: "Nome",
+            text: "ID",
             align: "left",
-            value: "Nome"
+            value: "ID"
         },
+        { text: "Nome", value: "Nome" },
         { text: "Data Nascimento", value: "Nacismento" },
         { text: "CPF", value: "CPF" },
         { text: "Email", value: "Email" },
