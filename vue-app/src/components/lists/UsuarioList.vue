@@ -13,7 +13,7 @@
                 <td class="text-xs-right">
                     <v-dialog v-model="dialogEdit" width="500">
                         <template v-slot:activator="{ on }">
-                            <v-btn color="primary" fab dark v-on="on" @click="SetUserAux(props.item)">
+                            <v-btn color="primary" small fab dark v-on="on" @click="SetUserAux(props.item)">
                                 <v-icon right>fas fa-edit</v-icon>
                             </v-btn>
                         </template>
@@ -21,9 +21,6 @@
                             <usuario-form :ID=userAux.ID :Nome=userAux.Nome :Nacismento=userAux.Nacismento :CPF=userAux.CPF :Email=userAux.Email :Senha=userAux.Senha :Permissao=userAux.Permissao></usuario-form>
                         </v-card>
                     </v-dialog>
-                    <v-btn fab dark small color="primary" @click="EditarUsuario(props.item)">
-                        <v-icon dark>fas fa-edit</v-icon>
-                    </v-btn>
                 </td>
                 <td class="text-xs-right">
                     <v-dialog v-model="dialogDel" width="500">
