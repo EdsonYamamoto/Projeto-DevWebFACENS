@@ -44,6 +44,7 @@
           <v-flex shrink>
             <main-dashboard v-if="this.tela==''"></main-dashboard>
             <usuario-view v-if="this.tela=='Usuarios'"></usuario-view>
+            <curso-view v-if="this.tela=='Cursos'"></curso-view>
             <input-file v-if="this.tela=='inputFile'"></input-file>
           </v-flex>
         </v-layout>
@@ -57,6 +58,7 @@
 
 import mainDashboard from "@/components/MainDashboard";
 import usuarioView from "@/view/UsuarioView";
+import cursoView from "@/view/CursoView";
 import inputFile from "@/components/InputFile";
 import * as ServiceUser from "@/assets/service/userService.js";
 
@@ -64,6 +66,7 @@ export default {
   components: {
     mainDashboard,
     usuarioView,
+    cursoView,
     inputFile
   },
   data: () => ({
@@ -91,8 +94,8 @@ export default {
       },
       {
         icon: "fas fa-tags",
-        text: "Curso",
-        function: "Curso"
+        text: "Cursos",
+        function: "Cursos"
       },
       {
         icon: "fas fa-plus",
